@@ -156,6 +156,7 @@ public:
                     T next_elem = T(0);
                     next_elem += coefs[0] * (somos[i - 3] * forward_sequence[i - 1]) + coefs[1] * (somos[i - 2] * forward_sequence[i - 2]) + coefs[1] * (somos[i - 2] * forward_sequence[i - 2]);
                     next_elem += coefs[0] * (somos[i - 1] * forward_sequence[i - 3]) - somos[i] * forward_sequence[i - 4];
+		    next_elem += coefs[2] * somos[i - 1] * somos[i - 3] + coefs[3] * somos[i - 2] * somos[i - 2];
                     next_elem = next_elem / somos[i - 4];
                     
                     if (next_elem == T(0)) {
@@ -176,6 +177,7 @@ public:
                     T next_elem = T(0);
                     next_elem += coefs[0] * (somos[n0 + 1] * backward_sequence[i - 3]) + coefs[1] * (somos[n0 + 2] * backward_sequence[i - 2]) + coefs[1] * (somos[n0 + 2] * backward_sequence[i - 2]);
                     next_elem += coefs[0] * (somos[n0 + 3] * backward_sequence[i - 1]) - somos[n0] * backward_sequence[i - 4];
+		    next_elem += coefs[2] * somos[n0 + 3] * somos[n0 + 1] + coefs[3] * somos[n0 + 2] * somos[n0 + 2];
                     next_elem = next_elem / somos[n0 + 4];
                     
                     if (next_elem == T(0)) {

@@ -135,7 +135,12 @@ void Rational::Simplify() {
         numerator *= -1;
         denominator *= -1;
     }
-    BigInt gcd = EuclideanAlgorithm(numerator, denominator);
+    BigInt gcd;
+    if (numerator > 0) {
+        gcd = EuclideanAlgorithm(numerator, denominator);
+    } else {
+        gcd = EuclideanAlgorithm(-numerator, denominator);
+    }
     numerator /= gcd;
     denominator /= gcd;
 }
@@ -355,9 +360,6 @@ Rational& Rational::operator/=(const std::pair<BigInt, BigInt>& pair) {
 }
 
 // Binary arithmetic operators definition
-//
-//
-//
 
 Rational Rational::operator+(const Rational& rhs) const {
     Rational tmp = *this;
@@ -521,10 +523,10 @@ Rational& Rational::operator--() {
 */
 
 bool Rational::operator<(const Rational& rhs) const {
-    return numerator * rhs.denominator < rhs.numerator / denominator;
+    return numerator * rhs.denominator < rhs.numerator * denominator;
 }
 bool Rational::operator>(const Rational& rhs) const {
-    return numerator * rhs.denominator > rhs.numerator / denominator;
+    return numerator * rhs.denominator > rhs.numerator * denominator;
 }
 bool Rational::operator<=(const Rational& rhs) const {
     return !(*this > rhs);
