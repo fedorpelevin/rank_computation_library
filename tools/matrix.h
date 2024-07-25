@@ -14,6 +14,9 @@ BigInt factorial(BigInt n) {
 }
 
 template<typename F>
+class Sequence;
+
+template<typename F>
 class Matrix;
 
 template<typename F>

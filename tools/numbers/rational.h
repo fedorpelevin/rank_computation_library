@@ -1,3 +1,4 @@
+#pragma once
 #include <ostream>
 #include <utility>
 #include "bigint.hpp"
